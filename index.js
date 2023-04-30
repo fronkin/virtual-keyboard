@@ -48,7 +48,7 @@ text_input.addEventListener('keydown', function(e) { // для 4 пробело�
        this.selectionStart = this.selectionEnd = start + 4;
     }
     if(e.code == 'Enter') {
-        console.log('1');
+        
         let cursorPos = this.selectionStart;
         let front = (this.value).substring(0, cursorPos);
         let back = (this.value).substring(cursorPos, this.value.length);
@@ -59,11 +59,45 @@ text_input.addEventListener('keydown', function(e) { // для 4 пробело�
     }
     
  });
+ 
+
+
+ 
+document.addEventListener('keydown', function (event) {    
+    if (event.shiftKey) {      
+      const keys = document.querySelectorAll('.keys');      
+      keys.forEach(key => {
+        if (key.textContent.length < 2) {
+        key.textContent = key.textContent.toUpperCase();
+    } else return
+      });
+    }
+    
+  });
+  
+  document.addEventListener('keyup', function (event) {   
+         
+    if (!event.shiftKey ) {  
+
+      const keys = document.querySelectorAll('.keys');      
+      keys.forEach(key => {
+       
+        if (key.textContent.length < 2) {
+            key.textContent = key.textContent.toLowerCase();
+        } else return
+        
+      });
+    }
+  });
+
+
 
 window.addEventListener('keydown', function(e) {
     
     for(let i = 0; i < keys.length; i++) {        
         if(e.key == keys[i].getAttribute('keyname' ) || e.key == keys[i].getAttribute('lowerCaseName')) {
+            
+            
             if (e.key == 'Tab') {
                 e.preventDefault(); // чтобы не перейти на следующий элемент               
                 keys[i].classList.add('active')                                    
@@ -77,6 +111,7 @@ window.addEventListener('keydown', function(e) {
               caps_lock_key.classList.remove('active');
             } else {
               caps_lock_key.classList.add('active');
+              
             }
             break
           }
@@ -90,21 +125,25 @@ window.addEventListener('keydown', function(e) {
                 ctrlrKey.classList.add('active')
          }
         if(e.code == 'ControlLeft') {
-        console.log(e.code);
+        
             ctrllKey.classList.add('active')
         }
-        if(e.code == 'Shift') {
-            shift_right.classList.remove('active')
-        }
-        if(e.code == 'Shift') {
-            shift_left.classList.remove('active')
-        }
+        // if(e.code == 'Shift') {
+           
+        //     shift_right.classList.remove('active')
+           
+        // }
+        // if(e.code == 'Shift') {
+        //     shift_left.classList.remove('active')
+            
+        // }
         
         
     }
 })
 
-window.addEventListener('keyup', function(e) {    
+window.addEventListener('keyup', function(e) {   
+     
     for(let i = 0; i < keys.length; i++) {
         if(e.key == keys[i].getAttribute('keyname' ) || e.key == keys[i].getAttribute('lowerCaseName')) {
             if (e.key == 'Tab') {
@@ -131,19 +170,24 @@ window.addEventListener('keyup', function(e) {
             ctrllKey.classList.remove('active')
             ctrllKey.classList.remove('remove')
         }        
-        if(e.code == 'Shift') {
-            shift_right.classList.remove('active')
-            shift_right.classList.remove('remove')
-        }
-        if(e.code == 'Shift') {
-            shift_left.classList.remove('active')
-            shift_left.classList.remove('remove')
-        }
+        // if(e.code == 'Shift') {
+        //     shift_right.classList.remove('active')
+        //     shift_right.classList.remove('remove')
+            
+        // }
+        // if(e.code == 'Shift') {
+        //     shift_left.classList.remove('active')
+        //     shift_left.classList.remove('remove')
+        //     console.log('1');
+            
+        // }
         setTimeout(()=> {
             keys[i].classList.remove('remove')
         },200)
     }
 })
+
+
 
 
 night_mode.addEventListener('click',function() {
@@ -165,6 +209,7 @@ colors_input.addEventListener('input',function() {
     keyboard_lights.style.background = colors_input.value;
 })
 
+// клик мышкой
 for(let i = 0; i < keys.length; i++) {
     keys[i].addEventListener('click', function() {
       
@@ -174,3 +219,64 @@ for(let i = 0; i < keys.length; i++) {
 
     });
   }
+
+for (let i = 0; i < keys.length; i++) {
+    keys[i].addEventListener('mousedown', function(e) {
+        
+        this.classList.add('active');
+        // Handle special key functionality
+        if (this.getAttribute('keyname') === 'CapsLock') {
+            if (caps_lock_key.classList.contains('active')) {
+                caps_lock_key.classList.remove('active');
+            } else {
+                caps_lock_key.classList.add('active');
+            }
+        }
+        if (this.getAttribute('keyname') === 'Space') {
+            spaceKey.classList.add('active');
+
+        }
+        if (this.getAttribute('keyname') === 'ControlRight') {
+            ctrlrKey.classList.add('active');
+        }
+        if (this.getAttribute('keyname') === 'ControlLeft') {
+            ctrllKey.classList.add('active');
+        }
+        if (this.classList.contains('shift_left')) {
+            shift_right.classList.remove('active');
+        }
+        if (this.classList.contains('shift_right')) {
+            shift_left.classList.remove('active');
+        }
+    });
+    
+    keys[i].addEventListener('mouseup', function(e) {
+        this.classList.remove('active');
+        this.classList.add('remove');
+        setTimeout(() => {
+            this.classList.remove('remove');
+        }, 200);
+        // Handle special key functionality
+        if (this.getAttribute('keyname') === 'Space') {
+            spaceKey.classList.remove('active');
+            spaceKey.classList.add('remove');
+        }
+        if (this.getAttribute('keyname') === 'ControlRight') {
+            ctrlrKey.classList.remove('active');
+            ctrlrKey.classList.remove('remove');
+        }
+        if (this.getAttribute('keyname') === 'ControlLeft') {
+            ctrllKey.classList.remove('active');
+            ctrllKey.classList.remove('remove');
+        }
+        if (this.classList.contains('shift_left')) {
+            shift_right.classList.remove('active');
+            shift_right.classList.remove('remove');
+        }
+        if (this.classList.contains('shift_right')) {
+            shift_left.classList.remove('active');
+            shift_left.classList.remove('remove');
+        }
+    })
+}
+

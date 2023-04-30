@@ -48,9 +48,16 @@ export const en = () =>{
     
     const keys2 = ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\'];
     keys2.forEach(key => {
-      const keyElement = document.createElement('div');keyElement.classList.add('keys');
-      keyElement.textContent = key;
-      row2.append(keyElement);
+        if (key.length >= 3) {
+            const keyElement = document.createElement('div');keyElement.classList.add('keys');
+            keyElement.textContent = key;
+            row2.append(keyElement);
+        } else {
+            const keyElement = document.createElement('div');keyElement.classList.add('keys');
+            keyElement.textContent = key.toLowerCase();
+            row2.append(keyElement);
+        }
+      
     });
     keyboardKeys.append(row2);
     
@@ -59,10 +66,18 @@ export const en = () =>{
     
     const keys3 = ['Caps Lock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter'];
     keys3.forEach(key => {
+        if (key.length >= 3) {
       const keyElement = document.createElement('div');
       keyElement.classList.add('keys');
       keyElement.textContent = key;
       row3.append(keyElement);
+        } else {
+            const keyElement = document.createElement('div');
+            keyElement.classList.add('keys');
+            keyElement.textContent = key.toLowerCase();
+            row3.append(keyElement);
+        }
+      
     });
     keyboardKeys.append(row3);
     
@@ -72,10 +87,18 @@ export const en = () =>{
     
     const keys4 = ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '?', 'Shift'];
     keys4.forEach(key => {
-      const keyElement = document.createElement('div');
-      keyElement.classList.add('keys');
-      keyElement.textContent = key;
-      row4.append(keyElement);
+        if (key.length >= 3) {
+            const keyElement = document.createElement('div');
+            keyElement.classList.add('keys');
+            keyElement.textContent = key;
+            row4.append(keyElement);
+        }else{
+            const keyElement = document.createElement('div');
+            keyElement.classList.add('keys');
+            keyElement.textContent = key.toLowerCase();
+            row4.append(keyElement);
+        }
+      
     });
     keyboardKeys.append(row4);
     
