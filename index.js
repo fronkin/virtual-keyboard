@@ -5,6 +5,8 @@ let langCode = "en";
 const lang = language[langCode];
 lang();
 
+
+
 let caps = "down"; // "down" | "up"
 let ctrl = "down"; // "down" | "up"
 
@@ -164,11 +166,11 @@ text_input.addEventListener("keydown", function (e) {
 });
 
 document.addEventListener("keydown", function (event) {
-  // ljltkfnm!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  
   if (event.shiftKey && event.key === "Shift") {
     if (caps === 'up') {
       keyToDown();
-    console.log('1');
+    
     } else {
     keyToUp();
     }
@@ -231,6 +233,7 @@ window.addEventListener("keydown", function (e) {
 });
 
 window.addEventListener("keyup", function (e) {
+  
   for (let i = 0; i < keys.length; i++) {
     if (
       e.key == keys[i].getAttribute("keyname") ||
@@ -270,12 +273,16 @@ window.addEventListener("keyup", function (e) {
   if (e.code == "AltLeft" && ctrl === "up") {
     if (langCode === "en") {
       langCode = "ru";
+      localStorage.setItem("langCode", langCode);
     } else {
       langCode = "en";
+      localStorage.setItem("langCode", langCode);
     }
     const lang = language[langCode];
     lang();
     init();
+    
+    
   }
 });
 
@@ -408,4 +415,20 @@ for (let i = 0; i < keys.length; i++) {
       
     }
   });
+}
+
+// сохранение языка раскладки
+let savedLanguage = localStorage.getItem("langCode")
+if(savedLanguage === "ru") {
+  langCode = 'ru'  
+  const lang = language[langCode];
+    lang();
+    init();
+} else if(savedLanguage === "en") {
+  
+  langCode = 'en'
+  const lang = language[langCode];
+    lang();
+    init();
+  
 }
