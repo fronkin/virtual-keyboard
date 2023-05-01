@@ -42,6 +42,7 @@ body {
     margin: 4px;
     transition: .2s;
     z-index: 5;
+    
 }
 
 .backspace_key {
@@ -64,13 +65,28 @@ body {
     width: 120px;
 }
 
-.shift_key {
+.shift_left {
+    width: 124px;
+}
+.shift_right {
     width: 124px;
 }
 
 .space_key {
-    max-width: 600px;
+    max-width: 470px;
     width: 100%;
+}
+.top_key{
+
+}
+.left_key{
+
+}
+.bottom_key{
+
+}
+.right_key{
+
 }
 
 .text {

@@ -14,8 +14,20 @@ const spacekButton = document.querySelector('.row:nth-child(5) .keys:nth-child(4
 spacekButton.classList.add('space_key');
 const ctrllButton = document.querySelector('.row:nth-child(5) .keys:nth-child(1)'); 
 ctrllButton.classList.add('ctrl_l_key');
-const ctrlrButton = document.querySelector('.row:nth-child(5) .keys:nth-child(6)'); 
+const ctrlrButton = document.querySelector('.row:nth-child(5) .keys:nth-child(9)'); 
 ctrlrButton.classList.add('ctrl_r_key');
+const shiftleftButton = document.querySelector('.row:nth-child(4) .keys:nth-child(1)'); 
+shiftleftButton.classList.add('shift_left');
+const shiftrightButton = document.querySelector('.row:nth-child(4) .keys:nth-child(13)'); 
+shiftrightButton.classList.add('shift_right');
+const topButton = document.querySelector('.row:nth-child(4) .keys:nth-child(12)'); 
+topButton.classList.add('top_key');
+const leftButton = document.querySelector('.row:nth-child(5) .keys:nth-child(6)'); 
+leftButton.classList.add('left_key');
+const bottomButton = document.querySelector('.row:nth-child(5) .keys:nth-child(7)'); 
+bottomButton.classList.add('bottom_key');
+const rightButton = document.querySelector('.row:nth-child(5) .keys:nth-child(8)'); 
+rightButton.classList.add('right_key');
 
 let keys = document.querySelectorAll('.keys');
 let spaceKey = document.querySelector('.space_key');

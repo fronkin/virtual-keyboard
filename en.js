@@ -30,6 +30,14 @@ export const en = () =>{
     
     const keyboardKeys = document.createElement('div');
     keyboardKeys.classList.add('keyboard_keys');
+
+    const description = document.createElement('p');
+    description.textContent = 'Клавиатура создана в операционной системе Windows';
+    description.classList.add('description');
+
+    const language = document.createElement('p');
+    language.textContent = 'Для переключения языка комбинация: левыe ctrl + alt';
+    language.classList.add('language');
     
     const row1 = document.createElement('div');
     row1.classList.add('row');
@@ -105,7 +113,7 @@ export const en = () =>{
     const row5 = document.createElement('div');
     row5.classList.add('row');
     
-    const keys5 = ['Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl']; keys5.forEach(key => {
+    const keys5 = ['Ctrl', 'Win', 'Alt', ' ', 'Alt', '  ', '  ', '  ', 'Ctrl']; keys5.forEach(key => {
       const keyElement = document.createElement('div');
       keyElement.classList.add('keys');
       keyElement.textContent = key;
@@ -124,6 +132,8 @@ export const en = () =>{
     container.append(changeLightColor);
     container.append(keyboardWrapp);
     container.append(textInput);
+    container.append(description);
+    container.append(language);
     document.body.append(container);
     
 }

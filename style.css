@@ -64,12 +64,16 @@ body {
   width: 120px;
 }
 
-.shift_key {
+.shift_left {
+  width: 124px;
+}
+
+.shift_right {
   width: 124px;
 }
 
 .space_key {
-  max-width: 600px;
+  max-width: 470px;
   width: 100%;
 }
 
