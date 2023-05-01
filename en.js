@@ -46,7 +46,7 @@ export const en = () =>{
     const row2 = document.createElement('div');
     row2.classList.add('row');
     
-    const keys2 = ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\'];
+    const keys2 = ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\','Del'];
     keys2.forEach(key => {
         if (key.length >= 3) {
             const keyElement = document.createElement('div');keyElement.classList.add('keys');
