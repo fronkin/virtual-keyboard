@@ -26,6 +26,10 @@ let colors_input;
 let keyboard_lights;
 let keyboard_wrapp;
 
+// фокус на textarea
+window.onload = () => { text_input.focus(); }
+window.onclick = () => { text_input.focus() }
+
 function init() {
   // добавляем классы
   const capsLockButton = document.querySelector(
@@ -278,6 +282,7 @@ window.addEventListener("keyup", function (e) {
 });
 
 night_mode.addEventListener("click", function () {
+  
   toggle_circle.classList.toggle("active");
   body.classList.toggle("active");
   night_mode.classList.toggle("active");
@@ -298,6 +303,7 @@ colors_input.addEventListener("input", function () {
 
 // клик мышкой
 for (let i = 0; i < keys.length; i++) {
+  console.log('1');
   keys[i].addEventListener("click", function () {
     console.log(keys[i].textContent);
     let key = this.getAttribute("keyname");
@@ -333,6 +339,7 @@ for (let i = 0; i < keys.length; i++) {
 // клик мышкой + добавление класса active
 for (let i = 0; i < keys.length; i++) {
   keys[i].addEventListener("mousedown", function (e) {
+    
     // Обработка специальной ключевой функции
     if (this.getAttribute("keyname") === "Caps Lock") {
       if (caps_lock_key.classList.contains("active")) {
