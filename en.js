@@ -10,18 +10,6 @@ export const en = () =>{
     toggleCircle.classList.add('toggle_circle');
     nightMode.append(toggleCircle);
     
-    const changeLightColor = document.createElement('div');
-    changeLightColor.classList.add('change_light_color');
-    
-    const colors = document.createElement('div');
-    colors.classList.add('colors');
-    
-    const colorsInput = document.createElement('input');
-    colorsInput.classList.add('colors_input');
-    colorsInput.setAttribute('type', 'color');
-    
-    colors.append(colorsInput);
-    changeLightColor.append(colors);
     
     const keyboardWrapp = document.createElement('div');
     keyboardWrapp.classList.add('keyboard_wrapp');
@@ -130,7 +118,7 @@ export const en = () =>{
     keyboardWrapp.append(keyboardLights);
     keyboardWrapp.append(keyboardKeys);
     container.append(nightMode);
-    container.append(changeLightColor);
+    
     container.append(keyboardWrapp);
     container.append(textInput);
     container.append(description);
