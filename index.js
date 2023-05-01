@@ -344,9 +344,11 @@ for (let i = 0; i < keys.length; i++) {
     // Обработка специальной ключевой функции
     if (this.getAttribute("keyname") === "Caps Lock") {
       if (caps_lock_key.classList.contains("active")) {
+        caps = "down";
         caps_lock_key.classList.remove("active");
         keyToDown();
       } else {
+        caps = "up";
         caps_lock_key.classList.add("active");
         keyToUp();
       }
@@ -362,21 +364,13 @@ for (let i = 0; i < keys.length; i++) {
       ctrllKey.classList.add("active");
     }
     if (this.getAttribute("keyname") === "Shift") {
-      keys[i].classList.forEach((el) => {
-        keys.forEach((em) => {
-          if (em.textContent.length < 2) {
-            em.textContent = em.textContent.toUpperCase();
-          }
-
-          if (/\d/.test(em.textContent) || /[^a-zA-Z]/.test(em.textContent)) {
-            if (langCode === "en") {
-              em.textContent = shiftingEn(em.textContent);
-            } else {
-              em.textContent = shiftingRu(em.textContent);
-            }
-          }
-        });
-      });
+      if (caps === 'up') {
+        keyToDown();
+      console.log('1');
+      } else {
+      keyToUp();
+      }
+      
     }
     this.classList.add("active");
   });
@@ -405,21 +399,13 @@ for (let i = 0; i < keys.length; i++) {
       ctrllKey.classList.remove("remove");
     }
     if (this.getAttribute("keyname") === "Shift") {
-      keys[i].classList.forEach((el) => {
-        keys.forEach((em) => {
-          if (em.textContent.length < 2) {
-            em.textContent = em.textContent.toLowerCase();
-          }
+      if (caps === 'up') {
 
-          if (/\d/.test(em.textContent) || /[^a-zA-Z]/.test(em.textContent)) {
-            if (langCode === "en") {
-              em.textContent = downingEn(em.textContent);
-            } else {
-              em.textContent = downingRu(em.textContent);
-            }
-          }
-        });
-      });
+        keyToUp()
+      } else {
+        keyToDown();
+      }
+      
     }
   });
 }
