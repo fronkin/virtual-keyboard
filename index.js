@@ -34,6 +34,10 @@ window.onclick = () => { text_input.focus() }
 
 function init() {
   // добавляем классы
+  const backspaceButton = document.querySelector(
+    ".row:nth-child(1) .keys:nth-child(14)"
+  );
+  backspaceButton.classList.add("backspace_key");
   const capsLockButton = document.querySelector(
     ".row:nth-child(3) .keys:nth-child(1)"
   );
@@ -226,6 +230,7 @@ window.addEventListener("keydown", function (e) {
       ctrlrKey.classList.add("active");
     }
     if (e.code == "ControlLeft") {
+      
       ctrllKey.classList.add("active");
       ctrl = "up";
     }
@@ -270,7 +275,7 @@ window.addEventListener("keyup", function (e) {
     }, 200);
   }
 
-  if (e.code == "AltLeft" && ctrl === "up") {
+  if (e.code == "AltLeft" ) {
     if (langCode === "en") {
       langCode = "ru";
       localStorage.setItem("langCode", langCode);
@@ -281,6 +286,7 @@ window.addEventListener("keyup", function (e) {
     const lang = language[langCode];
     lang();
     init();
+    click()
     
     
   }
@@ -308,14 +314,15 @@ colors_input.addEventListener("input", function () {
 
 
 
-// клик мышкой
-
+//фикс раскладки
+function click() {
+  
 for (let i = 0; i < keys.length; i++) {
-  console.log('1');
+  
   keys[i].addEventListener("click", function () {
-    console.log(keys[i].textContent);
+    
     let key = this.getAttribute("keyname");
-    console.log(key);
+    
     if (key === "") {
       text_input.value += " ";
     } else if (key === "Tab") {
@@ -346,6 +353,7 @@ for (let i = 0; i < keys.length; i++) {
 
 // клик мышкой + добавление класса active
 for (let i = 0; i < keys.length; i++) {
+  
   keys[i].addEventListener("mousedown", function (e) {
     
     // Обработка специальной ключевой функции
@@ -373,7 +381,116 @@ for (let i = 0; i < keys.length; i++) {
     if (this.getAttribute("keyname") === "Shift") {
       if (caps === 'up') {
         keyToDown();
-      console.log('1');
+      
+      } else {
+      keyToUp();
+      }
+      
+    }
+    this.classList.add("active");
+  });
+
+  keys[i].addEventListener("mouseup", function (e) {
+    if (this.getAttribute("keyname") === "Caps Lock") {
+      return;
+    }
+    this.classList.remove("active");
+    this.classList.add("remove");
+
+    setTimeout(() => {
+      this.classList.remove("remove");
+    }, 200);
+    // Обработка специальной ключевой функции
+    if (this.getAttribute("keyname") === "Space") {
+      spaceKey.classList.remove("active");
+      spaceKey.classList.add("remove");
+    }
+    if (this.getAttribute("keyname") === "ControlRight") {
+      ctrlrKey.classList.remove("active");
+      ctrlrKey.classList.remove("remove");
+    }
+    if (this.getAttribute("keyname") === "ControlLeft") {
+      ctrllKey.classList.remove("active");
+      ctrllKey.classList.remove("remove");
+    }
+    if (this.getAttribute("keyname") === "Shift") {
+      if (caps === 'up') {
+
+        keyToUp()
+      } else {
+        keyToDown();
+      }
+      
+    }
+  });
+}
+}
+// клик мышкой
+for (let i = 0; i < keys.length; i++) {
+  
+  keys[i].addEventListener("click", function () {
+    
+    let key = this.getAttribute("keyname");
+    
+    if (key === "") {
+      text_input.value += " ";
+    } else if (key === "Tab") {
+      text_input.value += "    ";
+    } else if (key === "Shift") {
+    } else if (key === "Backspace") {
+      const startPos = text_input.selectionStart;
+      text_input.value =
+        text_input.value.slice(0, startPos - 1) +
+        text_input.value.slice(text_input.selectionStart);
+      text_input.setSelectionRange(startPos - 1, startPos - 1);
+    } else if (key === "Del") {
+      const startPos = text_input.selectionStart;
+      text_input.value =
+        text_input.value.slice(0, startPos) +
+        text_input.value.slice(text_input.selectionStart + 1);
+      text_input.setSelectionRange(startPos, startPos);
+    } else if (key === "Enter") {
+      text_input.value += "\n";
+    } else if (key === "Caps Lock") {
+    } else if (key === "Ctrl") {
+    } else if (key === "Alt") {
+    } else {
+      text_input.value += keys[i].textContent;
+    }
+  });
+}
+
+// клик мышкой + добавление класса active
+for (let i = 0; i < keys.length; i++) {
+  
+  keys[i].addEventListener("mousedown", function (e) {
+    
+    // Обработка специальной ключевой функции
+    if (this.getAttribute("keyname") === "Caps Lock") {
+      if (caps_lock_key.classList.contains("active")) {
+        caps = "down";
+        caps_lock_key.classList.remove("active");
+        keyToDown();
+      } else {
+        caps = "up";
+        caps_lock_key.classList.add("active");
+        keyToUp();
+      }
+      return;
+    }
+    if (this.getAttribute("keyname") === "Space") {
+      spaceKey.classList.add("active");
+    }
+    if (this.getAttribute("keyname") === "ControlRight") {
+      ctrlrKey.classList.add("active");
+    }
+    if (this.getAttribute("keyname") === "ControlLeft") {
+      ctrllKey.classList.add("active");
+    }
+    if (this.getAttribute("keyname") === "Shift") {
+      if (caps === 'up') {
+        keyToDown();
+      
       } else {
       keyToUp();
       }
@@ -420,15 +537,18 @@ for (let i = 0; i < keys.length; i++) {
 // сохранение языка раскладки
 let savedLanguage = localStorage.getItem("langCode")
 if(savedLanguage === "ru") {
+  
   langCode = 'ru'  
   const lang = language[langCode];
     lang();
     init();
+    click()
 } else if(savedLanguage === "en") {
   
   langCode = 'en'
   const lang = language[langCode];
     lang();
     init();
+    click()
   
 }
