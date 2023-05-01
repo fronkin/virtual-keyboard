@@ -166,26 +166,24 @@ text_input.addEventListener("keydown", function (e) {
 document.addEventListener("keydown", function (event) {
   // ljltkfnm!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   if (event.shiftKey && event.key === "Shift") {
-    // if (caps === 'up') {
+    if (caps === 'up') {
+      keyToDown();
+    console.log('1');
+    } else {
     keyToUp();
-    // } else {
-    // keyToUp();
-    // }
+    }
   }
 });
 
 document.addEventListener("keyup", function (event) {
-  if (!event.shiftKey && event.key === "Shift") {
-    // if (caps === 'down') {
-    //   keyToUp();
-    // } else {
-    //   keyToDown();
-    // }
+  if (!event.shiftKey && event.key === "Shift") {  
 
-    // if (caps === 'up') {
+    if (caps === 'up') {
 
-    keyToDown();
-    // }
+      keyToUp()
+    } else {
+      keyToDown();
+    }
   }
 });
 
@@ -301,7 +299,10 @@ colors_input.addEventListener("input", function () {
   keyboard_lights.style.background = colors_input.value;
 });
 
+
+
 // клик мышкой
+
 for (let i = 0; i < keys.length; i++) {
   console.log('1');
   keys[i].addEventListener("click", function () {
