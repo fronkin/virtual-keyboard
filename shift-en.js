@@ -1,5 +1,4 @@
-export const en = () =>{
-    document.body.innerHTML = ''
+export const shiftEn = () =>{
     const container = document.createElement('div');
     container.classList.add('container');
     
@@ -43,7 +42,7 @@ export const en = () =>{
     const row1 = document.createElement('div');
     row1.classList.add('row');
     
-    const keys1 = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'];
+    const keys1 = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace'];
     keys1.forEach(key => {
       const keyElement = document.createElement('div');
       keyElement.classList.add('keys');
@@ -55,7 +54,7 @@ export const en = () =>{
     const row2 = document.createElement('div');
     row2.classList.add('row');
     
-    const keys2 = ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\','Del'];
+    const keys2 = ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|','Del'];
     keys2.forEach(key => {
         if (key.length >= 3) {
             const keyElement = document.createElement('div');keyElement.classList.add('keys');
@@ -73,7 +72,7 @@ export const en = () =>{
     const row3 = document.createElement('div');
     row3.classList.add('row');
     
-    const keys3 = ['Caps Lock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter'];
+    const keys3 = ['Caps Lock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter'];
     keys3.forEach(key => {
         if (key.length >= 3) {
       const keyElement = document.createElement('div');
@@ -94,7 +93,7 @@ export const en = () =>{
     const row4 = document.createElement('div');
     row4.classList.add('row');
     
-    const keys4 = ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '↑', 'Shift'];
+    const keys4 = ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '↑', 'Shift'];
     keys4.forEach(key => {
         if (key.length >= 3) {
             const keyElement = document.createElement('div');
