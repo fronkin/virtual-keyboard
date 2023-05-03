@@ -267,6 +267,7 @@ window.addEventListener('keydown', (e) => {
     }
     if (e.code === 'ControlRight') {
       ctrlrKey.classList.add('active');
+      ctrl = 'up';
     }
     if (e.code === 'ControlLeft') {
       ctrllKey.classList.add('active');
@@ -316,6 +317,7 @@ window.addEventListener('keyup', (e) => {
       e.preventDefault();
       ctrlrKey.classList.remove('active');
       ctrlrKey.classList.remove('remove');
+      ctrl = 'down';
     }
 
     if (e.code === 'ControlLeft') {
@@ -346,7 +348,7 @@ window.addEventListener('keyup', (e) => {
     }, 200);
   }
 
-  if (e.code === 'AltLeft' && ctrl === 'up') {
+  if ((e.code === 'AltLeft' && ctrl === 'up') || (e.code === 'AltRight' && ctrl === 'up')) {
     e.preventDefault();
     if (langCode === 'en') {
       langCode = 'ru';

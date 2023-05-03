@@ -1,3 +1,5 @@
+/* eslint-disable arrow-parens */
+/* eslint linebreak-style: ["error", "windows"] */
 export const en = () =>{
     document.body.innerHTML = ''
     const container = document.createElement('div');
